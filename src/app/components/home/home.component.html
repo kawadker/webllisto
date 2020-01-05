@@ -1,0 +1,25 @@
+<div class="pos-center" *ngIf="data.length == 0">
+  <div class="spinner-border custom-loader" role="status">
+  </div>
+  <span class="loadin-text">Loading...</span>
+</div>
+<div class="container mt-4">
+  <table class="table" *ngIf="data.length">
+    <thead>
+      <tr>
+        <th *ngFor="let head of headElements" class="table-data" scope="col">{{head}}
+        </tr>
+      </thead>
+      <tbody>
+        <tr mdbTableCol *ngFor="let el of data; let i= index;">
+          <td class="table-data">{{i+1}}</td> <!-----'NO.'--->
+          <td class="table-data">{{el._id}}</td> <!-----'ID.'--->
+          <td class="table-data">{{el.amount}}</td> <!-----'AMOUNT.'--->
+          <td class="table-data">{{el.price}}</td> <!-----'PRICE.'--->
+          <td class="table-data">{{getTimeAndDate(el.timestamp) |
+            date:'dd/MMM/yyyy h:mm:ss a'}}</td> <!-----'DATE & TIME.'--->
+          <td class="table-data">{{el.buy}}</td> <!-----'BUY.'--->
+        </tr>
+      </tbody>
+    </table>
+  </div>

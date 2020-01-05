@@ -1,0 +1,36 @@
+
+<div class=" container b-row col-lg-6 col-md-6 mt-4">
+  <div class="vertical-center">
+    <div>
+      <div *ngIf="isSuccess" class="alert alert-success">
+        <strong>Success!</strong> <br>
+        You have logged in successfully.
+      </div>
+    
+      <div *ngIf="failureRes" class="alert alert-danger">
+        <strong>Error!</strong><br>
+         {{failureRes}}
+      </div>
+    </div>
+  <div>
+    <h3 style="text-align: center;color: blueviolet;">LOGIN</h3>
+  </div>
+  <div>
+    <form [formGroup]="loginForm">
+      <div class="form-group">
+        <label for="uname">Email:</label>
+        <input type="email" class="form-control" (focus)="this.isSubmit = false" [ngClass]="(loginForm.controls['email'].touched  && !loginForm.controls['email'].valid)?'in-valid-input':''" formControlName="email" id="uname" placeholder="Enter email" name="uname" required>
+        <div [ngClass]="(loginForm.controls['email'].touched  && !loginForm.controls['email'].valid) ? 'invalid-input-text':'hide-text'" >Please enter your email.</div>
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control"  (focus)="this.isSubmit = false" [ngClass]="(loginForm.controls['password'].touched  && !loginForm.controls['password'].valid)?'in-valid-input':''" formControlName="password"  id="pwd" placeholder="Enter password" name="pswd" required>
+        <div [ngClass]="(loginForm.controls['password'].touched  && !loginForm.controls['password'].valid) ? 'invalid-input-text':'hide-text'" >Please enter your password.</div>
+      </div>
+      <div class="d-flex justify-content-center full-width">
+        <button type="submit" (click)="login(loginForm)" [disabled]="!loginForm.valid || isSubmit" [ngClass]="(!loginForm.valid || isSubmit)? 'pointer-none':''" class="btn btn-primary full-width">Login</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
